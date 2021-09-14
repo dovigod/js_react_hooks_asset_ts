@@ -19,10 +19,11 @@ const useInput = (initialValue: string = 'none', validator: Function) => {
 
 	return { value, onChange };
 };
-
-const useTab = () => {};
-
-const content = [
+interface Section {
+	tab: string;
+	content: string;
+}
+const content: Array<Section> = [
 	{
 		tab: 'Section 1',
 		content: "I'm the content of Section 1"
@@ -32,17 +33,23 @@ const content = [
 		content: "I'm the content of Section 2"
 	}
 ];
-const App = () => {
-	const maxLen = (value: string): boolean => {
-		console.log(value.length);
-		return value.length < 10;
-	};
-	const name = useInput('Mr.', maxLen);
 
+const useTabs = (initialTab: number, allTabs: Array<Object>): any => {
+	const [currentIndex, setCurrentIndex] = useState<number>(initialTab);
+
+	return {
+		currentItem: allTabs[currentIndex],
+		changeItem: setCurrentIndex
+	};
+};
+const App = () => {
+	const { currentItem, changeItem } = useTabs(0, content);
 	return (
 		<>
-			<h1>Hello {name.value}</h1>
-			<input placeholder="Name" {...name}></input>
+			{content.map((section, index) => (
+				<button onClick={() => changeItem(index)}>{section.tab}</button>
+			))}
+			<div>{currentItem.content}</div>
 		</>
 	);
 };
