@@ -1,55 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
 import './App.css';
-const useInput = (initialValue: string = 'none', validator: Function) => {
-	const [value, setValue] = useState(initialValue);
-	const onChange = (e: any) => {
-		const {
-			target: { value }
-		} = e;
 
-		console.log(value);
-		let willUpdate: boolean = true;
+const useTitle = (initialTitle: string): any => {
+	const [title, setTitle] = useState(initialTitle);
 
-		willUpdate = validator(value);
-		if (willUpdate) {
-			setValue(value);
-		}
+	const updateTitle = () => {
+		const htmlTitle = document.querySelector('title') as HTMLElement;
+		// asserting..
+		htmlTitle.innerText = title;
 	};
-
-	return { value, onChange };
+	useEffect(updateTitle, [title]);
+	return setTitle;
 };
-interface Section {
-	tab: string;
-	content: string;
-}
-const content: Array<Section> = [
-	{
-		tab: 'Section 1',
-		content: "I'm the content of Section 1"
-	},
-	{
-		tab: 'Section 2',
-		content: "I'm the content of Section 2"
-	}
-];
 
-const useTabs = (initialTab: number, allTabs: Array<Object>): any => {
-	const [currentIndex, setCurrentIndex] = useState<number>(initialTab);
-
-	return {
-		currentItem: allTabs[currentIndex],
-		changeItem: setCurrentIndex
-	};
-};
 const App = () => {
-	const { currentItem, changeItem } = useTabs(0, content);
+	const titleUpdater = useTitle('Loading Title..');
+	setTimeout(() => titleUpdater('Home'), 5000);
 	return (
 		<>
-			{content.map((section, index) => (
-				<button onClick={() => changeItem(index)}>{section.tab}</button>
-			))}
-			<div>{currentItem.content}</div>
+			<div>Hi</div>
 		</>
 	);
 };
