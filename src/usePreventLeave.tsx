@@ -1,7 +1,3 @@
-import React, { useState, useEffect, useRef } from 'react';
-
-import './App.css';
-
 const usePreventLeave = (): { enablePrevent: Function; disablePrevent: Function } => {
 	const listener = (e: Event) => {
 		e.preventDefault();
@@ -16,16 +12,4 @@ const usePreventLeave = (): { enablePrevent: Function; disablePrevent: Function 
 	return { enablePrevent, disablePrevent };
 };
 
-const App = () => {
-	const { enablePrevent, disablePrevent } = usePreventLeave();
-
-	return (
-		<>
-			<div>Hi</div>
-			<button onClick={enablePrevent}>protect</button>
-			<button onClick={disablePrevent}>unprotect</button>
-		</>
-	);
-};
-
-export default App;
+export default usePreventLeave;
