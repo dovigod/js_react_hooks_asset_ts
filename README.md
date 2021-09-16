@@ -2,6 +2,7 @@
 
 written with typescript for just practicing
 
-> 1. [ ] useInput
-> 2. [ ] useTab
-> 3. [ ] useTitle
+> 1. [o] useInput
+> 2. [o] useTab
+> 3. [o] useTitle
+> 4. [o] useClick
