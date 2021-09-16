@@ -9,3 +9,5 @@ written with typescript for just practicing
 > 5. [x] useConfirm
 > 6. [x] usePreventLeave
 > 7. [x] usePageLeave
+> 8. [x] useFadeIn
+> 9. [x] useNetwork

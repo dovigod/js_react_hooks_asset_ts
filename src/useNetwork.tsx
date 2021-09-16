@@ -1,7 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-
-import './App.css';
-
+import { useEffect, useState } from 'react';
 const useNetwork = (onChange: Function) => {
 	const [status, setStatus] = useState(navigator.onLine);
 
@@ -23,18 +20,4 @@ const useNetwork = (onChange: Function) => {
 	return status;
 };
 
-const App = () => {
-	const handler = (state: any) => {
-		console.log(state);
-	};
-	const online = useNetwork(handler);
-
-	return (
-		<>
-			<div>Hi</div>
-			<h1>{online ? 'online' : 'offline'}</h1>
-		</>
-	);
-};
-
-export default App;
+export default useNetwork;
