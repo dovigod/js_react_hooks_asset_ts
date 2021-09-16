@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useRef, HTMLAttributes } from 'react';
-
-import './App.css';
+import { useRef, useEffect } from 'react';
 
 const useFadeIn = (time: number = 1, timingFunction: string, delay: number = 0) => {
 	const element = useRef<HTMLHeadingElement>(null);
@@ -17,17 +15,12 @@ const useFadeIn = (time: number = 1, timingFunction: string, delay: number = 0) 
 		style: { opacity: 0 }
 	};
 };
-const App = () => {
-	const el = useFadeIn(0.5, 'ease-in-out', 0);
+
+export default useFadeIn;
+
+/*
+const el = useFadeIn(0.5, 'ease-in-out', 0);
 	const p = useFadeIn(3, 'ease-in-out', 0.5);
-
-	return (
-		<>
-			<div>Hi</div>
-			<h1 {...el}>dops!</h1>
-			<p {...p}>heee</p>
-		</>
-	);
-};
-
-export default App;
+<h1 {...el}>dops!</h1>
+<p {...p}>heee</p>
+ */
