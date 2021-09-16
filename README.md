@@ -13,3 +13,4 @@ written with typescript for just practicing
 > 9. [x] useNetwork
 > 10. [x] useScroll
 > 11. [x] useFullScreen
+> 12. [x] useNotification
