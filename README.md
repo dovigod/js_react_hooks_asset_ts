@@ -2,7 +2,10 @@
 
 written with typescript for just practicing
 
-> 1. [o] useInput
-> 2. [o] useTab
-> 3. [o] useTitle
-> 4. [o] useClick
+> 1. [x] useInput
+> 2. [x] useTab
+> 3. [x] useTitle
+> 4. [x] useClick
+> 5. [x] useConfirm
+> 6. [x] usePreventLeave
+> 7. [x] usePageLeave
