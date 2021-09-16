@@ -10,7 +10,7 @@ const useTitle = (initialTitle: string): any => {
 		// asserting..
 		htmlTitle.innerText = title;
 	};
-	useEffect(updateTitle, [title]);
+	useEffect(updateTitle, [title]); //didmount , willupdate , willunmount
 	return setTitle;
 };
 
