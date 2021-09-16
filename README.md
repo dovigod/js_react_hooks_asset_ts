@@ -11,3 +11,5 @@ written with typescript for just practicing
 > 7. [x] usePageLeave
 > 8. [x] useFadeIn
 > 9. [x] useNetwork
+> 10. [x] useScroll
+> 11. [x] useFullScreen

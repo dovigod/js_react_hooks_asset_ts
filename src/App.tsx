@@ -1,38 +1,31 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, EventHandler, UIEventHandler, SyntheticEvent } from 'react';
+import { elementType } from 'prop-types';
 
 import './App.css';
-
-const useNetwork = (onChange: Function) => {
-	const [status, setStatus] = useState(navigator.onLine);
-
-	const handleChange = (e: Event) => {
-		console.dir(e);
-		onChange(navigator.onLine);
-		setStatus(navigator.onLine);
+const useFullScreen = () => {
+	const element = useRef<HTMLImageElement>(null);
+	const openFullScreen = () => {
+		if (element.current) {
+			element.current.requestFullscreen();
+		}
 	};
-
-	useEffect(() => {
-		window.addEventListener('online', handleChange);
-		window.addEventListener('offLine', handleChange);
-
-		return () => {
-			window.removeEventListener('offLine', handleChange);
-			window.removeEventListener('online', handleChange);
-		};
-	}, []);
-	return status;
+	const exitFullScreen = () => {
+		document.exitFullscreen();
+	};
+	return { element, openFullScreen, exitFullScreen };
 };
-
 const App = () => {
-	const handler = (state: any) => {
-		console.log(state);
-	};
-	const online = useNetwork(handler);
-
+	const { element, openFullScreen, exitFullScreen } = useFullScreen();
 	return (
 		<>
 			<div>Hi</div>
-			<h1>{online ? 'online' : 'offline'}</h1>
+			<img
+				onClick={exitFullScreen}
+				ref={element}
+				src="https://i.picsum.photos/id/724/200/200.jpg?hmac=sUKRpiwXopeRQ36cEVnZgrG3Wd73G8iet9dfVSvmi8k"
+				alt="dummy"
+			></img>
+			<button onClick={openFullScreen}>fullscreen</button>
 		</>
 	);
 };
