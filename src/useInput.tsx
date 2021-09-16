@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useInput = (initialValue: string = 'none', validator: Function) => {
+const useInput = (initialValue: string = 'none', validator: Function) => {
 	const [value, setValue] = useState(initialValue);
 	const onChange = (e: any) => {
 		const {
@@ -14,3 +14,5 @@ export const useInput = (initialValue: string = 'none', validator: Function) => 
 	};
 	return { value, onChange };
 };
+
+export default useInput;

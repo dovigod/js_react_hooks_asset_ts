@@ -1,7 +1,4 @@
-import React, { useState, useEffect, useRef, SyntheticEvent } from 'react';
-
-import './App.css';
-
+import { useEffect, useRef } from 'react';
 const useClick = (onclick: Function): any => {
 	const element = useRef<any>(); //like getElementById
 
@@ -23,18 +20,5 @@ const useClick = (onclick: Function): any => {
 	//dependency 존재 안하면, willmount , did update때 계속 콜백 실행, 존재시, willmount 단계에서만 실행
 	return element;
 };
-const App = () => {
-	const onclick = (e: React.MouseEvent): void => {
-		console.log(1);
-		console.log(e);
-	};
-	const target = useClick(onclick);
-	return (
-		<>
-			<div>Hi</div>
-			<h1 ref={target}>hello!!</h1>
-		</>
-	);
-};
 
-export default App;
+export default useClick;
